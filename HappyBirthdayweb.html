@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 17th Birthday Anushka! 🎉</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Background Aesthetic Decorations */
+    .bg-deco {
+      position: absolute;
+      font-size: 30px;
+      opacity: 0.6;
+      animation: floatBg 4s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes floatBg {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(15deg); }
+    }
+
+    /* Card Container */
+    .card {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      padding: 35px 25px;
+      border-radius: 30px;
+      box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+      max-width: 420px;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+      border: 3px solid #fff;
+    }
+
+    h1 {
+      color: #ff4757;
+      margin-bottom: 15px;
+      font-size: 26px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    p {
+      color: #4b4b4b;
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .sticker {
+      font-size: 40px;
+      display: inline-block;
+      animation: wiggle 1s infinite alternate;
+      margin: 5px;
+    }
+
+    @keyframes wiggle {
+      0% { transform: rotate(-10deg); }
+      100% { transform: rotate(10deg); }
+    }
+
+    /* Button Area */
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      min-height: 60px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-yes {
+      background-color: #ff4757;
+      color: white;
+      z-index: 20;
+    }
+
+    .btn-no {
+      background-color: #70a1ff;
+      color: white;
+    }
+
+    button:hover {
+      filter: brightness(1.1);
+    }
+
+    /* Cake & Candles Styling */
+    .cake-box {
+      margin: 15px 0;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .cake-art {
+      font-size: 70px;
+      position: relative;
+      animation: bounce 1.2s infinite alternate ease-in-out;
+    }
+
+    .candles {
+      font-size: 28px;
+      letter-spacing: 5px;
+      margin-top: -15px;
+    }
+
+    .blow-hint {
+      font-size: 14px;
+      color: #ff4757;
+      font-weight: bold;
+      animation: blink 1s infinite alternate;
+      margin-top: 8px;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    /* Floating Confetti */
+    .confetti {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #ff6b81;
+      animation: floatUp 5s linear infinite;
+      bottom: -50px;
+      z-index: 1;
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .wishes-box {
+      background: #fff0f3;
+      padding: 20px;
+      border-radius: 20px;
+      border: 2px dashed #ff4757;
+      margin-top: 10px;
+    }
+
+    .wishes-text {
+      line-height: 1.8;
+      font-size: 18px;
+      color: #d63031;
+      font-weight: 600;
+    }
+
+    .childhood-tag {
+      font-size: 14px;
+      color: #ff6b81;
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Confetti & Background Sparkles -->
+  <div id="confetti-container"></div>
+  <div class="bg-deco" style="top: 10%; left: 8%;">🎈</div>
+  <div class="bg-deco" style="top: 20%; right: 10%;">⭐</div>
+  <div class="bg-deco" style="bottom: 15%; left: 12%;">🎁</div>
+  <div class="bg-deco" style="bottom: 25%; right: 15%;">💖</div>
+
+  <!-- Background Music (Autoplay with fallback) -->
+  <audio id="bg-music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-buddy.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+
+    <!-- Step 1: Do you want to celebrate prompt -->
+    <div id="step-celebrate">
+      <span class="sticker">👑🎂💅</span>
+      <h1 id="question-text">Do you want to celebrate?</h1>
+      <p style="font-size: 14px; color: #888;">(Choose wisely bestie 😏)</p>
+      <div class="btn-container">
+        <button id="btn-yes" class="btn-yes" onclick="startCelebration()">YES! 🎉</button>
+        <button id="btn-no" class="btn-no" onclick="handleNoClick()">No 😜</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Birthday Celebration Screen with Interactive Candles -->
+    <div id="step-party" class="hidden">
+      <span class="sticker">🎈✨💃✨🎈</span>
+      
+      <div class="cake-box" onclick="blowCandles()">
+        <div class="cake-art">🎂</div>
+        <div id="candle-element" class="candles">🕯️🕯️🕯️</div>
+        <div id="blow-text" class="blow-hint">✨ Click to blow the candles! ✨</div>
+      </div>
+
+      <h1>Happy Birthday Anushka!</h1>
+      <p>Official Birthday Queen turning 17 today! 👑🔥</p>
+
+      <div id="next-btn-container" class="btn-container hidden">
+        <button class="btn-yes" onclick="showNextText()">Next ➡️</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Getting Old Tease -->
+    <div id="step-old" class="hidden">
+      <span class="sticker">👵⏳🤪</span>
+      <h1 style="font-size: 28px; color: #ff4757; margin-top: 15px;">You're getting old 😁 hehe</h1>
+      <p style="margin-top: 10px;">Look at you officially turning 17! 👵✨<br>Time flies since childhood days! 🧒➡️👵</p>
+      <p style="font-size: 14px; color: #888; margin-top: 20px;">Wait a sec... something special is coming up! ⏳</p>
+    </div>
+
+    <!-- Step 4: Final Special Wishes -->
+    <div id="step-final" class="hidden">
+      <span class="sticker">💖✨🎉🎁</span>
+      <div class="wishes-box">
+        <p class="wishes-text">
+          Happy birthday! I hope your day is just as awesome as you are.<br><br>
+          Enjoy your special day<br><br>
+          ❣️❣️
+        </p>
+        <div class="childhood-tag">
+          ~ So lucky to have you as my childhood friend! Cheers to 17 years! 🥂✨
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let noClickCount = 0;
+    let yesButtonScale = 1;
+    let candlesBlown = false;
+
+    // Pop-up alert right AFTER the page completely loads
+    window.onload = function() {
+      setTimeout(function() {
+        alert("HEY BIRTHDAY GIRL");
+      }, 200);
+      createConfetti();
+    };
+
+    // "No" button interaction logic
+    function handleNoClick() {
+      noClickCount++;
+      const questionText = document.getElementById("question-text");
+      const yesBtn = document.getElementById("btn-yes");
+      const noBtn = document.getElementById("btn-no");
+
+      // Make YES button progressively bigger
+      yesButtonScale += 0.45;
+      yesBtn.style.transform = `scale(${yesButtonScale})`;
+
+      if (noClickCount === 1) {
+        questionText.innerText = "Are you sure?";
+      } else if (noClickCount === 2) {
+        questionText.innerText = "Aren't you happy on your special day.";
+      } else if (noClickCount === 3) {
+        questionText.innerText = "I don't recommend to click no.";
+      } else if (noClickCount >= 4) {
+        questionText.innerText = "Haha now you have to click yes.";
+        noBtn.classList.add("hidden"); // No button disappears completely!
+      }
+    }
+
+    // "Yes" button clicked
+    function startCelebration() {
+      // Try playing background music safely on user interaction
+      const music = document.getElementById("bg-music");
+      music.play().catch(error => console.log("Audio autoplay restricted by browser"));
+
+      document.getElementById("step-celebrate").classList.add("hidden");
+      document.getElementById("step-party").classList.remove("hidden");
+    }
+
+    // Blow candles action
+    function blowCandles() {
+      if (!candlesBlown) {
+        candlesBlown = true;
+        document.getElementById("candle-element").innerHTML = "💨💨💨";
+        document.getElementById("blow-text").innerText = "🎉 Candles Blown! Woohoo! 🎉";
+        
+        // Reveal the Next button after candles are blown
+        setTimeout(function() {
+          document.getElementById("next-btn-container").classList.remove("hidden");
+        }, 800);
+      }
+    }
+
+    // Transition from party to "Getting old" to 6-second timer
+    function showNextText() {
+      document.getElementById("step-party").classList.add("hidden");
+      document.getElementById("step-old").classList.remove("hidden");
+
+      // 6-second timer until the final message appears
+      setTimeout(function() {
+        document.getElementById("step-old").classList.add("hidden");
+        document.getElementById("step-final").classList.remove("hidden");
+      }, 6000);
+    }
+
+    // Background floating animation generator
+    function createConfetti() {
+      const container = document.getElementById("confetti-container");
+      const colors = ['#ff4757', '#ffa502', '#2ed573', '#1e90ff', '#e84393', '#70a1ff'];
+
+      for (let i = 0; i < 30; i++) {
+        let piece = document.createElement("div");
+        piece.className = "confetti";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        piece.style.animationDelay = Math.random() * 2 + "s";
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        let size = Math.random() * 12 + 6;
+        piece.style.width = size + "px";
+        piece.style.height = size + "px";
+
+        container.appendChild(piece);
+      }
+    }
+  </script>
+</body>
+</html>
